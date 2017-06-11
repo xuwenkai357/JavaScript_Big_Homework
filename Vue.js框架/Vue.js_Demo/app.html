@@ -2,28 +2,28 @@
 <html lang="en">
 
 <head>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.7/vue.min.js
-"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.7/vue.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.1.17/vue-resource.js"></script>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Veu.js_Demo</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script type = "text/JavaScript" src ="js/app.js"></script>
+
 </head>
 
 <body>
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
-            <h1>Hello Vue.js ! </h1>
+            <h1> 图书管理 </h1>
             <div id="app">
               <table class="table table-hover" v-cloak>
                 <thead>
                   <tr>
-                    <th class="text-right" @click="sortBy('id')">序号</th>
-                    <th class="text-right" @click="sortBy('name')">书名</th>
-                    <th class="text-right" @click="sortBy('author')">作者</th>
-                    <th class="text-right" @click="sortBy('price')">价格</th>
-                    <th class="text-right" >操作</th>
+
+                    <th class="text-right">序号</th>
+                    <th class="text-right">书名</th>
+                    <th class="text-right">作者</th>
+                    <th class="text-right">价格</th>
+                    <th class="text-right">操作</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -34,12 +34,12 @@
                     <td class="text-right">{{book.price}}</td>
                     <template v-if="book.id%2==0">
                         <td class="text-right">
-                            <button type="button" class="btn btn-success" @click="delBook(book)">删除</button>
+                            <button type="button" class="btn btn-success" v-on:click="delBook(book)">删除</button>
                         </td>
                     </template>
                     <template v-else>
                          <td class="text-right">
-                            <button type="button" class="btn btn-danger" @click="delBook(book)">删除</button>
+                            <button type="button" class="btn btn-danger" v-on:click="delBook(book)">删除</button>
                          </td>
                     </template>
                   </tr>
@@ -84,24 +84,19 @@
 
         books: [{
                     id: 1,
-                    author: '曹雪芹',
-                    name: '红楼梦',
+                    author: 'JavaScript',
+                    name: '编程精读',
                     price: 32.0
                 }, {
                     id: 2,
-                    author: '施耐庵',
-                    name: '水浒传',
+                    author: '周苏',
+                    name: '创新思维',
                     price: 30.0
                 }, {
                     id: '3',
-                    author: '罗贯中',
-                    name: '三国演义',
+                    author: 'Android',
+                    name: '第一行代码',
                     price: 24.0
-                }, {
-                    id: 4,
-                    author: '吴承恩',
-                    name: '西游记',
-                    price: 20.0
                 }]
       },
       computed:{
@@ -121,9 +116,6 @@
         },
         delBook:function(book){
           this.books.$remove(book);
-        },
-        sortBy:function(sortparam){
-          this.sortparam = sortparam
         }
       }
     });
